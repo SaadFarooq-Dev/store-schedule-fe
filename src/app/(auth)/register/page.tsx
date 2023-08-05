@@ -16,6 +16,8 @@ const schema = z.object({
 type FormType = z.infer<typeof schema>;
 
 async function registerUser(data: FormType) {
+  console.log(process.env.BASE_URL);
+
   const res = await fetch(`${process.env.BASE_URL}/auth/signup`, {
     method: "POST",
     headers: {
