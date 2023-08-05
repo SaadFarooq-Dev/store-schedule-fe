@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem("token") || null;
+    const token = typeof window !== "undefined" ?  localStorage.getItem("token") : null;
     if (token) {
       router.push("/store");
     }

@@ -40,7 +40,7 @@ export default function Register() {
   const mutation = useMutation({
     mutationFn: loginUser,
     onSuccess: (res) => {
-      localStorage.setItem("token", res.token);
+      typeof window !== "undefined" ? localStorage.setItem("token", res.token) : undefined;
       router.push("/store");
     },
     onError: (err: any) => {

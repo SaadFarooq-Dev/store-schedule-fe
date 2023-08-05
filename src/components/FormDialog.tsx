@@ -36,7 +36,7 @@ export default function FormDialog({
 
   async function updateStore({ id, data }: { id: string; data: any }) {
     try {
-      const token = localStorage.getItem("token");
+      const token = typeof window !== "undefined" ?  localStorage.getItem("token") : null;
       const store = await fetch(`${process.env.BASE_URL}/store/${id}`, {
         method: "PATCH",
         body: JSON.stringify(data),

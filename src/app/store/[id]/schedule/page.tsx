@@ -12,7 +12,7 @@ type SelectedDaysType = {
 };
 
 async function createStoreSchedule({ id, data }: { id: string; data: any }) {
-  const token = localStorage.getItem("token");
+  const token = typeof window !== "undefined" ?  localStorage.getItem("token") : null;
   const res = await fetch(`${process.env.BASE_URL}/store/${id}/openinghours`, {
     method: "POST",
     body: JSON.stringify(data),

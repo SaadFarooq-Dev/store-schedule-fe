@@ -15,7 +15,7 @@ type FormType = z.infer<typeof schema>;
 
 async function createStore(data: FormType) {
   try {
-    const token = localStorage.getItem("token") || null;
+    const token = typeof window !== "undefined" ?  localStorage.getItem("token") : null;
     const store = await fetch(`${process.env.BASE_URL}/store`, {
       method: "POST",
 

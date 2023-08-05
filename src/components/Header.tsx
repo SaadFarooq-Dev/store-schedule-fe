@@ -17,7 +17,7 @@ export default function Header() {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = typeof window !== "undefined" ?  localStorage.getItem("token") : null;
     if (token) {
       setIsAuth(true);
     }

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 async function getAllStores() {
   try {
-    const token = localStorage.getItem("token");
+    const token = typeof window !== "undefined" ?  localStorage.getItem("token") : null;
     const store = await fetch(`${process.env.BASE_URL}/store`, {
       headers: { "x-auth-token": `${token}` },
     }).then((res) => res.json());

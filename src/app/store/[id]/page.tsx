@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 async function getStoreSchedules(id: string) {
   try {
-    const token = localStorage.getItem("token");
+    const token = typeof window !== "undefined" ?  localStorage.getItem("token") : null;
     const store = await fetch(
       `${process.env.BASE_URL}/store/${id}/openinghours`,
       {
@@ -23,7 +23,7 @@ async function getStoreSchedules(id: string) {
 
 async function getStore(id: string) {
   try {
-    const token = localStorage.getItem("token");
+    const token = typeof window !== "undefined" ?  localStorage.getItem("token") : null;
     const store = await fetch(`${process.env.BASE_URL}/store/${id}`, {
       headers: { "x-auth-token": `${token}` },
     }).then((res) => res.json());
@@ -44,7 +44,7 @@ async function deleteStoreSchedule({
   };
 }) {
   try {
-    const token = localStorage.getItem("token");
+    const token = typeof window !== "undefined" ?  localStorage.getItem("token") : null;
     const store = await fetch(
       `${process.env.BASE_URL}/store/${id}/openinghours`,
       {
@@ -65,7 +65,7 @@ async function deleteStoreSchedule({
 
 async function deleteStore({ id }: { id: string }) {
   try {
-    const token = localStorage.getItem("token");
+    const token = typeof window !== "undefined" ?  localStorage.getItem("token") : null;
     const store = await fetch(`${process.env.BASE_URL}/store/${id}`, {
       method: "DELETE",
       headers: {
