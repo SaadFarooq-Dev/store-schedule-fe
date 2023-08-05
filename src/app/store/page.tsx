@@ -61,7 +61,7 @@ export default function page() {
           {isLoading ? (
             <div>...Loading</div>
           ) : (
-            data?.stores?.map((store) => (
+            data?.stores?.map((store: any) => (
               <StoreCard
                 title={store.name}
                 user={store.User.name}
