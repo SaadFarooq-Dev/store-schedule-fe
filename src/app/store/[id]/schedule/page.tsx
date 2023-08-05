@@ -137,6 +137,7 @@ export default function page({ params }: { params: { id: string } }) {
                       ...initialSelectedDays,
                     };
                     for (const day in updatedSelectedDays) {
+                      // @ts-ignore
                       updatedSelectedDays[day] = true;
                     }
                     setSelectedDays(updatedSelectedDays);
